@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "pinnedFiles": {
+    "scripts/studio-verify.mjs": "25267ac8b7c832197768aae5cfcf54f542e43eb1a28bdf53d70b894acce9ba04",
+    "scripts/studio-guardrails.mjs": "a8870c57f5a79ee225236e9c723b59ba1c78c9f48b7878f476bbde65503e9b6a"
+  }
+}

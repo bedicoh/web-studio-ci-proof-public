@@ -1,0 +1,15 @@
+{
+  "name": "web-studio-ci-proof",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Dépôt de preuve jetable — LOT CI, démonstration réelle sur GitHub Actions. Aucune donnée client, aucun secret. Projet npm minimal réel, sans dépendance externe.",
+  "type": "module",
+  "scripts": {
+    "lint": "node ci-scripts/lint.mjs",
+    "typecheck": "node ci-scripts/typecheck.mjs",
+    "build": "node ci-scripts/build.mjs",
+    "test": "node --test test/index.test.mjs",
+    "studio:verify": "node scripts/studio-verify.mjs",
+    "studio:guardrails": "node scripts/studio-guardrails.mjs"
+  }
+}

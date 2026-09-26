@@ -1,0 +1,43 @@
+# CI proof fixture
+# Synthetic public project used only to validate the Web Studio CI gate.
+# The job name `web-studio-gate` is the required status check protecting `main`.
+
+name: Web Studio CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web-studio-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (.nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: studio:guardrails (fichier direct, avant installation — arbre fraîchement extrait)
+        run: node scripts/studio-guardrails.mjs
+
+      - name: Install dependencies (npm ci)
+        run: npm ci
+
+      - name: studio:verify (fichier direct, après installation — dépendances requises)
+        run: node scripts/studio-verify.mjs
